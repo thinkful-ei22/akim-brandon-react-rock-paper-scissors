@@ -37,18 +37,19 @@ class App extends Component {
     });
   }
 
-  resetGame(e, callback) {
+  resetGame() {
     this.setState({
       gameOver: false,
       playerChose: "",
       cpuChose: ""
     });
-    callback;
+    this.choice();
   }
 
   componentDidMount() {
     this.choice();
   }
+
   render() {
     console.log(this.state);
     if (this.state.gameOver === true) {
@@ -59,10 +60,7 @@ class App extends Component {
             playerChose={this.state.playerChose}
             cpuChose={this.state.cpuChose}
           />
-          <Button
-            label="New Game"
-            onClick={e => this.resetGame(e, () => this.choice())}
-          />
+          <Button label="New Game" onClick={() => this.resetGame()} />
         </div>
       );
     }
