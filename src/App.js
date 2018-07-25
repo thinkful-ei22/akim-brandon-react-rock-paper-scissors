@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Button from "./components/button";
 import CPUChoice from "./components/cpu-choice";
+import WinLoseTie from "./components/win-lose-tie";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ class App extends Component {
     this.state = {
       gameOver: false,
       playerChose: "",
-      cpuChose: ''
+      cpuChose: ""
     };
   }
 
@@ -35,25 +36,22 @@ class App extends Component {
       cpuChose: cpuChoice
     });
   }
-  componentDidMount(){
-  this.choice()
+  componentDidMount() {
+    this.choice();
   }
-    render() {
-   
-
+  render() {
     console.log(this.state);
     if (this.state.gameOver === true) {
-     
       return (
-
         <div>
-          <CPUChoice choice={this.cpuChose} />
+          CPU chose <CPUChoice choice={this.state.cpuChose} />
+          <WinLoseTie
+            playerChose={this.state.playerChose}
+            cpuChose={this.state.cpuChose}
+          />
         </div>
       );
-
-      
     }
-    
 
     return (
       <div className="App">
