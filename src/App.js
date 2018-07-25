@@ -35,18 +35,26 @@ class App extends Component {
       cpuChose: cpuChoice
     });
   }
+  componentDidMount(){
+  this.choice()
+  }
+    render() {
+   
 
-  choice()
-
-  render() {
     console.log(this.state);
     if (this.state.gameOver === true) {
+     
       return (
+
         <div>
-          <CPUChoice choice={() => this.cpuChose()} />
+          <CPUChoice choice={this.cpuChose} />
         </div>
       );
+
+      
     }
+    
+
     return (
       <div className="App">
         <Button onClick={e => this.playerPick(e)} label="rock" />
